@@ -1,0 +1,65 @@
+@mixin rest-ele {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin media($size) {
+  @if $size == "mobile" {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      & {
+        @content;
+      }
+    }
+  } @else if $size == "tablet" {
+    @media screen and (min-width: 768px) and (max-width: 1999px) {
+      & {
+        @content;
+      }
+    }
+  } @else if $size == "desktop" {
+    @media screen and (min-width: 1200px) {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin flex-box(
+  $dir: row,
+  $justify: center,
+  $align: center,
+  $wrap: nowrap,
+  $gap: 0px
+) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin hover($duration: 0s, $delay: 0s, $function: ease) {
+  & {
+    transition-duration: $duration;
+    transition-delay: $delay;
+    transition-timing-function: $function;
+    transition-property: all;
+  }
+  &:hover {
+    @content;
+  }
+}
+@mixin circle($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+}
+@mixin rest-link($color: inherit, $padding: 0px, $wight: bold) {
+  text-decoration: none;
+  color: $color;
+  padding: $padding;
+  font-weight: $wight;
+}

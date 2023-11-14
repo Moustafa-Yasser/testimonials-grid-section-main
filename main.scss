@@ -1,0 +1,132 @@
+@import "./Helper/mixins.scss";
+
+$link-google-font: "https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap";
+$font-family: "Barlow Semi Condensed", sans-serif;
+$Moderate-violet: hsl(263, 55%, 52%);
+$Very-dark-grayish-blue: hsl(217, 19%, 35%);
+$Very-dark-blackish-blue: hsl(219, 29%, 14%);
+$White: hsl(0, 0%, 100%);
+$Light-gray: hsl(0, 0%, 81%);
+$Light-grayish-blue: hsl(210, 46%, 95%);
+
+@import url($link-google-font);
+
+* {
+  @include rest-ele;
+}
+
+body {
+  font-family: $font-family;
+  min-height: 100vh;
+  background-color: $Light-grayish-blue;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.8px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @include media(mobile) {
+    grid-template-columns: 1fr;
+    width: 84%;
+    padding: 50px 0;
+    article {
+      grid-area:inherit !important;
+    }
+  };
+  gap: 30px;
+  width: 90%;
+  article {
+    padding: 30px;
+    border-radius: 7px;
+    figure {
+      @include flex-box(row, left, center, nowrap, 15px);
+      figcaption {
+        display: grid;
+        b {
+          color: $Light-gray;
+        }
+        span {
+          color: hsla(0, 0%, 81%, 0.5);
+        }
+      }
+    }
+    img {
+      @include circle();
+    }
+    h2 {
+      color: $White;
+      padding: 20px 0px;
+    }
+    p {
+      line-height: 1.6;
+      color: hsla(0, 0%, 81%, 0.7);
+    }
+  }
+  article:first-child {
+    background-color: $Moderate-violet;
+    grid-area: 1/1/1/3;
+    background-image: url(images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: 87% 0px;
+    background-size: 145px;
+    img {
+      border: 4px solid hsl(270, 32%, 55%);
+    }
+  }
+  article:nth-child(2) {
+    background-color: $Very-dark-grayish-blue;
+    grid-area: 1/3/1/4;
+  }
+  article:nth-child(3) {
+    background-color: $White;
+    figure {
+      b {
+        color: $Very-dark-grayish-blue;
+      }
+      span {
+        color: hsla(217, 19%, 35%, 0.5);
+      }
+    }
+    h2 {
+      color: hsl(217, 19%, 35%);
+    }
+    p {
+      color: hsla(217, 19%, 35%, 0.7);
+    }
+    grid-area: 2/1/3/1;
+  }
+  article:nth-child(4) {
+    background-color: $Very-dark-blackish-blue;
+    grid-area: 2/2/3/4;
+    img {
+      border: 4px solid hsl(271, 35%, 33%);
+    }
+  }
+
+  article:last-child {
+    background-color: $White;
+    figure {
+      figcaption {
+        b {
+          color: $Very-dark-grayish-blue;
+        }
+        span {
+          color: hsla(217, 19%, 35%, 0.5);
+        }
+      }
+    }
+    h2 {
+      color: hsl(217, 19%, 35%);
+    }
+    p {
+      color: hsla(217, 19%, 35%, 0.7);
+    }
+    grid-area: 1/4/3/5;
+  }
+}
